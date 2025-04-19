@@ -1,0 +1,15 @@
+.header{
+    text-align: center;
+    padding: 1rem;
+}
+.link{
+    background-color: rgb(69, 255, 140);
+    padding: 1rem 2rem;
+    display: inline-block;
+    border-radius: 10px;
+    transition: all .5s ease;
+    &:hover{
+        background-color: rgb(144, 35, 35);
+        color: white;
+    }
+}
