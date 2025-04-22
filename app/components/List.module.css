@@ -17,6 +17,7 @@
     cursor: pointer;
     transition: all .4s ease;
     overflow-y: scroll;
+    word-break: break-all;
     &:hover{
         background-color: rgb(19, 68, 137);
     }
@@ -28,14 +29,14 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    grid-auto-rows: 100px;
+    grid-auto-rows: 130px;
 }
 .search{
     margin-bottom: 1rem;
 }
 .genres{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 .genre{

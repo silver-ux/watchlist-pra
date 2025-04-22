@@ -18,6 +18,8 @@ const AddData = () => {
     const storyRef = useRef(null);
     const actorRef = useRef(null);
 
+    const [password, setPassword] = useState('');
+
     const handleKeyDown = (e, nextRef) => {
         if (e.key === 'Enter' && !isComposing) {
             if (nextRef) {
@@ -38,23 +40,31 @@ const AddData = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await addDoc(collection(db, "posts"), {
-                title,
-                actor,
-                story,
-                genre,
-                createdAt: serverTimestamp(),
-            });
-            setTitle("")
-            setGenre([]);
-            setStory("");
-            setActor("");
-            alert('映画を追加しました！')
-            location.href = '/';
-        } catch (err) {
-            console.error("追加に失敗しました。:", err)
+        if (password == 'js') {
+
+            try {
+                await addDoc(collection(db, "posts"), {
+                    title,
+                    actor,
+                    story,
+                    genre,
+                    createdAt: serverTimestamp(),
+                });
+                setTitle("")
+                setGenre([]);
+                setStory("");
+                setActor("");
+                setPassword('');
+                alert('映画を追加しました！')
+                location.href = '/';
+            } catch (err) {
+                console.error("追加に失敗しました。:", err)
+            }
+        } else {
+            alert('パスワードが違います。');
+            return;
         }
+
     }
 
 
@@ -88,6 +98,7 @@ const AddData = () => {
                     <input ref={actorRef} type="name" className={styles.input} autoComplete='off' required value={actor} onChange={e => setActor(e.target.value)} onKeyDown={(e) => handleKeyDown(e, null)} onCompositionStart={() => setIsComposing(true)}
                         onCompositionEnd={() => setIsComposing(false)} />
                 </div>
+                <input autoComplete='off' className={styles.input} placeholder='passwordを入力してください' type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button type='submit' className={styles.submit} >追加</button>
             </div>
         </form >

@@ -10,7 +10,14 @@ export default function Home() {
 
   // firebaseからデータを取得してmovies配列に入れる
   const [movies, setMovies] = useState([]);
+  const [load, setLoad] = useState(true);
+
   useEffect(() => {
+
+    setTimeout(() => {
+      setLoad(false)
+    }, 1000)
+
     const fetchData = async () => {
 
       // timestamp順に取得する
@@ -34,9 +41,12 @@ export default function Home() {
     fetchData();
   }, [])
   return (
-    <div className={styles.page}>
-      <Header />
-      <List movies={movies} setMovies={setMovies} />
-    </div>
+    <>
+      <div className={`${styles.loading} ${load ? styles.show : styles.hide}`}><p>Loading...</p></div>
+      <div className={styles.page}>
+        <Header />
+        <List movies={movies} setMovies={setMovies} />
+      </div>
+    </>
   );
 }
