@@ -6,7 +6,7 @@ import db from '../data/firebase';
 import Link from 'next/link';
 
 const AddData = () => {
-    const genreList = ["Action", "Adventure", "Anime", "Comedy", "Crime", "Fantasy", "History", "Horror", "Military", "Mystery", "Music", "Romance", "Thriller", "War",];
+    const genreList = ["アクション", "アドベンチャー", "アニメ", "コメディー", "犯罪", "ファンタジー", "歴史", "ホラー", "ミリタリー", "ミステリー", "ミュージック", "ロマンス", "スリラー", "戦争",];
 
     const [genre, setGenre] = useState([]);
     const [title, setTitle] = useState("");
@@ -50,10 +50,10 @@ const AddData = () => {
             setGenre([]);
             setStory("");
             setActor("");
-            alert('映画を追加しました（ Send a data )')
+            alert('映画を追加しました！')
             location.href = '/';
         } catch (err) {
-            console.error("Failed to add:", err)
+            console.error("追加に失敗しました。:", err)
         }
     }
 
@@ -61,8 +61,8 @@ const AddData = () => {
     return (
         <form className={styles.wrap} onSubmit={handleSubmit}>
             <div className={styles.container}>
-                <div className={styles.homebtn}><Link href='/'>Back to home</Link></div>
-                <h2>TITLE</h2>
+                <div className={styles.homebtn}><Link href='/'>リストに戻る</Link></div>
+                <h2>Title</h2>
                 <input ref={titleRef} type="text" value={title} className={styles.input} autoComplete='off' required onChange={e => setTitle(e.target.value)} onKeyDown={(e) => handleKeyDown(e, storyRef)} onCompositionStart={() => setIsComposing(true)}
                     onCompositionEnd={() => setIsComposing(false)} />
 
@@ -79,16 +79,16 @@ const AddData = () => {
                     ))}
                 </div>
                 <div className={styles.section}>
-                    <h2>STORY</h2>
+                    <h2>Story</h2>
                     <textarea ref={storyRef} type="text" className={`${styles.input} ${styles.textarea}`} autoComplete='off' required value={story} onChange={e => setStory(e.target.value)} onKeyDown={(e) => handleKeyDown(e, actorRef)} onCompositionStart={() => setIsComposing(true)}
                         onCompositionEnd={() => setIsComposing(false)} />
                 </div>
                 <div className={styles.section}>
-                    <h2>MAIN ACTOR</h2>
+                    <h2>Actor</h2>
                     <input ref={actorRef} type="name" className={styles.input} autoComplete='off' required value={actor} onChange={e => setActor(e.target.value)} onKeyDown={(e) => handleKeyDown(e, null)} onCompositionStart={() => setIsComposing(true)}
                         onCompositionEnd={() => setIsComposing(false)} />
                 </div>
-                <button type='submit' className={styles.submit} >Submit</button>
+                <button type='submit' className={styles.submit} >追加</button>
             </div>
         </form >
     )

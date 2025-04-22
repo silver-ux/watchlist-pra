@@ -1,7 +1,14 @@
+import db from '../data/firebase';
 import styles from './Modal.module.css'
+import { doc, deleteDoc } from "firebase/firestore";
 
 const Modal = ({ selectedMovie, setSelectedMovie }) => {
     const handleModal = () => {
+        setSelectedMovie(null);
+    }
+
+    const handleDelete = async () => {
+        await deleteDoc(doc(db, 'posts', selectedMovie.id));
         setSelectedMovie(null);
     }
 
@@ -14,8 +21,9 @@ const Modal = ({ selectedMovie, setSelectedMovie }) => {
                         {selectedMovie.genre.map((genre) => (
                             <span key={`${selectedMovie.id} + ${genre}`} className={styles.genre}>{genre}</span>
                         ))}
-                        <p>{selectedMovie.story}</p>
+                        <p className={styles.story}>{selectedMovie.story}</p>
                         <button className={styles.close} onClick={handleModal}>閉じる</button>
+                        <button className={styles.delete} onClick={handleDelete}>削除</button>
                     </div>
                 </div>
             )}

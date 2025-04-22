@@ -1,3 +1,11 @@
+.list{
+    margin-top: 1rem;
+}
+
+.watchlist{
+    margin-top: 1rem;
+}
+
 .card{
     text-align: center;
     background-color: rgb(49, 132, 249);
@@ -20,8 +28,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    padding: 1rem 0;
     grid-auto-rows: 100px;
+}
+.search{
+    margin-bottom: 1rem;
 }
 .genres{
     display: grid;
@@ -42,7 +52,7 @@
         transform: scale(1.05);
     }
 }
-.allbtn{
+.active{
     background-color: red;
     color: white;
 }
