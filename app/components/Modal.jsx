@@ -37,6 +37,7 @@ const Modal = ({ selectedMovie, setSelectedMovie }) => {
                             <span key={`${selectedMovie.id} + ${genre}`} className={styles.genre}>{genre}</span>
                         ))}
                         <p className={styles.story}>{selectedMovie.story}</p>
+                        <span><b>{selectedMovie.actor}</b></span>
                         <button className={styles.close} onClick={handleModal}>閉じる</button>
                         <button className={styles.delete} onClick={showPass}>削除</button>
                         {show && <div className={styles.password}>
