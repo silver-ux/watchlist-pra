@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCnLSmf_NqvPK1CxkWK-8caSZtHQAU1z1w",
-    authDomain: "mylist-movie.firebaseapp.com",
-    projectId: "mylist-movie",
-    storageBucket: "mylist-movie.firebasestorage.app",
-    messagingSenderId: "613582219355",
-    appId: "1:613582219355:web:c93c4c29ad114b429f777e"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGE_SENDER_ID,
+    appId: process.env.APP_ID,
 };
 
 // Initialize Firebase
