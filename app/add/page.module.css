@@ -4,8 +4,8 @@
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #333;
-    resize: none;
     outline: none;
+    resize: vertical;
   }
 .textarea{
   height: 5em;
