@@ -6,7 +6,7 @@ import db from '../data/firebase';
 import Link from 'next/link';
 
 const AddData = () => {
-    const genreList = ["アクション", "アドベンチャー", "アニメ", "コメディー", "犯罪", "ファンタジー", "歴史", "ホラー", "ミリタリー", "ミステリー", "ミュージック", "ロマンス", "スリラー", "戦争",];
+    const genreList = ["アクション", "アドベンチャー", "アニメ", "コメディー", "サスペンス", "実話", "犯罪", "ファンタジー", "歴史", "ホラー", "ミリタリー", "ミステリー", "ミュージック", "ロマンス", "スリラー", "戦争",];
 
     const [genre, setGenre] = useState([]);
     const [title, setTitle] = useState("");
@@ -40,32 +40,38 @@ const AddData = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (password == 'js') {
-
-            try {
-                await addDoc(collection(db, "posts"), {
-                    title,
-                    actor,
-                    story,
-                    genre,
-                    createdAt: serverTimestamp(),
-                });
-                setTitle("")
-                setGenre([]);
-                setStory("");
-                setActor("");
-                setPassword('');
-                alert('映画を追加しました！')
-                location.href = '/';
-            } catch (err) {
-                console.error("追加に失敗しました。:", err)
-            }
-        } else {
-            alert('パスワードが違います。');
+        if (!genre.length) {
+            alert('ジャンルを選択してください。');
             return;
-        }
+        } else {
 
+
+            if (password == 'js') {
+                try {
+                    await addDoc(collection(db, "posts"), {
+                        title,
+                        actor,
+                        story,
+                        genre,
+                        createdAt: serverTimestamp(),
+                    });
+                    setTitle("")
+                    setGenre([]);
+                    setStory("");
+                    setActor("");
+                    setPassword('');
+                    alert('映画を追加しました！')
+                    location.href = '/';
+                } catch (err) {
+                    console.error("追加に失敗しました。:", err)
+                }
+            } else {
+                alert('パスワードが違います。');
+                return;
+            }
+        }
     }
+
 
 
     return (
@@ -73,7 +79,7 @@ const AddData = () => {
             <div className={styles.container}>
                 <div className={styles.homebtn}><Link href='/'>リストに戻る</Link></div>
                 <h2>Title</h2>
-                <input ref={titleRef} type="text" value={title} className={styles.input} autoComplete='off' required onChange={e => setTitle(e.target.value)} onKeyDown={(e) => handleKeyDown(e, storyRef)} onCompositionStart={() => setIsComposing(true)}
+                <input autoFocus={true} ref={titleRef} type="text" value={title} className={styles.input} autoComplete='off' required onChange={e => setTitle(e.target.value)} onKeyDown={(e) => handleKeyDown(e, storyRef)} onCompositionStart={() => setIsComposing(true)}
                     onCompositionEnd={() => setIsComposing(false)} />
 
                 <div className={styles.btns}>

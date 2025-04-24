@@ -42,7 +42,7 @@ const Modal = ({ selectedMovie, setSelectedMovie }) => {
                         <button className={styles.delete} onClick={showPass}>削除</button>
                         {show && <div className={styles.password}>
                             <p>本当に削除しますか？</p>
-                            <input autoComplete='off' placeholder='パスワードを入力してください。' value={password} onChange={(e) => setPassword(e.target.value)} type="text" />
+                            <input autoFocus={true} autoComplete='off' placeholder='パスワードを入力してください。' value={password} onChange={(e) => setPassword(e.target.value)} type="text" />
                             <button onClick={() => setShow(false)} className={`${styles.passBtns} ${styles.passclose}`}>閉じる</button>
                             <button onClick={handleDelete} className={`${styles.passBtns} ${styles.del}`}>削除</button>
                         </div>
