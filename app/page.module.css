@@ -1,0 +1,21 @@
+.loading{
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    background-color: white;
+    transition: all .5s ease-in-out;
+     p{
+        font-size: 2rem;
+        font-weight: bold;
+     }
+}
+
+.show {
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+   visibility: hidden;
+}
